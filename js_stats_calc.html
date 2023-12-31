@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> JS Stats Calculator</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        #table_of_contents {
+            background-color: grey;
+        }
+
+        #main_section {
+            display: flex;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #main_section {
+                flex-direction: column;
+            }
+        }
+
+
+        /* Style the button that is used to open and close the collapsible content */
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: blue solid 1px;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .collapsible:hover {
+            background-color: #ccc;
+        }
+
+        /* Style the collapsible content. Note: hidden by default */
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #444444;
+        }
+
+
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.2.0/math.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs-erf/1.3.0/mathjs-erf.js"></script>
+
+</head>
+<body>
+    <div id="main_section">
+        <div id="table_of_contents">
+            <p> Table of Contents</p>
+
+        </div>
+        <div id="calculation_section">
+
+            <h1>Rough Javascript Statistics Calculator</h1>
+            <p>Made it to help us out for Stats</p>
+
+            <button type="button" class="collapsible">Instructions</button>
+            <div class="content">
+                <p>Finish Later</p>
+            </div>
+
+            <button type="button" class="collapsible">Rough Z Score Finder Function for left tailed test </button>
+            <div class="content">
+                <form id="Z_score_Finder_form" class="Z_score_Finder_form">
+                    <label for="Z_score_Finder_mean"> Mean: </label>
+                    <input type="number" id="Z_score_Finder_mean" name="Z_score_Finder_mean" min="0" step="0.001">
+                    <br>
+                    <label for="Z_score_Finder_std"> std: </label>
+                    <input type="number" id="Z_score_Finder_std" name="Z_score_Finder_std" min="0" step="0.001">
+                    <br>
+                    <label for="Z_score_Finder_target"> target: </label>
+                    <input type="number" id="Z_score_Finder_target" name="Z_score_Finder_target" min="0" step="0.001">
+                    <br>
+
+                    <input id="Z_score_Finder_submit" type="submit">
+                    <br>
+                    <input id="Z_score_Finder_reset" type="reset">
+
+
+                </form>
+                <div id="Z_score_Finder_answer">
+
+                </div>
+            </div>
+
+            <button type="button" class="collapsible">Rough t Score Finder Function for left tailed test </button>
+            <div class="content">
+                <h3> Way off. Remember to check this later</h3>
+                <form id="t_score_Finder_form" class="t_score_Finder_form">
+                    <label for="t_score_Finder_mean"> Mean: </label>
+                    <input type="number" id="t_score_Finder_mean" name="t_score_Finder_mean" min="0" step="0.001">
+                    <br>
+                    <label for="t_score_Finder_std"> std: </label>
+                    <input type="number" id="t_score_Finder_std" name="t_score_Finder_std" min="0" step="0.001">
+                    <br>
+                    <label for="t_score_Finder_target"> target: </label>
+                    <input type="number" id="t_score_Finder_target" name="t_score_Finder_target" min="0" step="0.001">
+                    <label for="t_score_Finder_n"> n: </label>
+                    <input type="number" id="t_score_Finder_n" name="t_score_Finder_n" min="0" step="0.001">
+                    <br>
+
+                    <input id="t_score_Finder_submit" type="submit">
+                    <br>
+                    <input id="t_score_Finder_reset" type="reset">
+
+
+                </form>
+                <div id="t_score_Finder_answer">
+
+                </div>
+            </div>
+
+            <button type="button" class="collapsible">Rough Pooled t test for difference in 2 sample means</button>
+            <div class="content">
+                <h3> Way off. I really gotta look into this at some point</h3>
+                <form id="pop_2_mean_pooled_t_form" class="pop_2_mean_pooled_t_form">
+                    <label for="pop_2_mean_pooled_t_mean_1"> Mean 1: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_mean_1" name="pop_2_mean_pooled_t_mean_1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_pooled_t_mean_2"> Mean 2: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_mean_2" name="pop_2_mean_pooled_t_mean_2" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_pooled_t_s1"> s1: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_s1" name="pop_2_mean_pooled_t_s1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_pooled_t_s2"> s2: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_s2" name="pop_2_mean_pooled_t_s2" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_pooled_t_n1"> n1: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_n1" name="pop_2_mean_pooled_t_n1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_pooled_t_n2"> n2: </label>
+                    <input type="number" id="pop_2_mean_pooled_t_n2" name="pop_2_mean_pooled_t_n2" min="0" step="0.001">
+                    <br>
+                    <input id="pop_2_mean_pooled_t_submit" type="submit">
+                    <br>
+                    <input id="pop_2_mean_pooled_t_reset" type="reset">
+
+
+                </form>
+                <div id="pop_2_mean_pooled_t_answer">
+
+                </div>
+
+
+            </div>
+            <button type="button" class="collapsible">Rough General t test for difference in 2 sample means</button>
+            <div class="content">
+                <h3> I get the right t values but the ps are incredibly off</h3>
+                <form id="pop_2_mean_general_t_form" class="pop_2_mean_general_t_form">
+                    <label for="pop_2_mean_general_t_mean_1"> Mean 1: </label>
+                    <input type="number" id="pop_2_mean_general_t_mean_1" name="pop_2_mean_general_t_mean_1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_general_t_mean_2"> Mean 2: </label>
+                    <input type="number" id="pop_2_mean_general_t_mean_2" name="pop_2_mean_general_t_mean_2" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_general_t_s1"> s1: </label>
+                    <input type="number" id="pop_2_mean_general_t_s1" name="pop_2_mean_general_t_s1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_general_t_s2"> s2: </label>
+                    <input type="number" id="pop_2_mean_general_t_s2" name="pop_2_mean_general_t_s2" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_general_t_n1"> n1: </label>
+                    <input type="number" id="pop_2_mean_general_t_n1" name="pop_2_mean_general_t_n1" min="0" step="0.001">
+                    <br>
+                    <label for="pop_2_mean_general_t_n2"> n2: </label>
+                    <input type="number" id="pop_2_mean_general_t_n2" name="pop_2_mean_general_t_n2" min="0" step="0.001">
+                    <br>
+                    <input id="pop_2_mean_general_t_submit" type="submit">
+                    <br>
+                    <input id="pop_2_mean_general_t_reset" type="reset">
+
+
+                </form>
+                <div id="pop_2_mean_general_t_answer">
+
+                </div>
+
+        </div>
+            <button type="button" class="collapsible">Binomial Distriubution </button>
+            <div class="content">
+                <h3>Finally. Something  that actually works</h3>
+                <form id="binomial_distribution_form" class="binomial_distribution_form">
+                    <label for="binomial_distribution_n"> n: </label>
+                    <input type="number" id="binomial_distribution_n" name="binomial_distribution_n" min="0" step="0.001">
+                    <br>
+                    <label for="binomial_distribution_k"> k: </label>
+                    <input type="number" id="binomial_distribution_k" name="binomial_distribution_k" min="0" step="0.001">
+                    <br>
+                    <label for="binomial_distribution_p"> p: </label>
+                    <input type="number" id="binomial_distribution_p" name="binomial_distribution_p" min="0" step="0.001">
+                    <br>
+
+                    <input id="binomial_distribution_submit" type="submit">
+                    <br>
+                    <input id="binomial_distribution_reset" type="reset">
+
+
+                </form>
+                <div id="binomial_distribution_answer">
+
+                </div>
+        </div> <!-- Closing Tag for content -->
+            <button type="button" class="collapsible">Binomial Cumulative </button>
+            <div class="content">
+                <h3>Finally. Something  that actually works (mostly lol)</h3>
+                <form id="binomial_cumulative_form" class="binomial_cumulative_form">
+                    <label for="binomial_cumulative_n"> n: </label>
+                    <input type="number" id="binomial_cumulative_n" name="binomial_cumulative_n" min="0" step="0.001">
+                    <br>
+                    <label for="binomial_cumulative_r"> r: </label>
+                    <input type="number" id="binomial_cumulative_r" name="binomial_cumulative_r" min="0" step="0.001">
+                    <br>
+                    <label for="binomial_cumulative_p"> p: </label>
+                    <input type="number" id="binomial_cumulative_p" name="binomial_cumulative_p" min="0" step="0.001">
+                    <br>
+
+                    <input id="binomial_cumulative_submit" type="submit">
+                    <br>
+                    <input id="binomial_cumulative_reset" type="reset">
+
+
+                </form>
+                <div id="binomial_cumulative_answer">
+
+                </div>
+            </div>
+            <button type="button" class="collapsible">confidence interval of a population proportion with a Z </button>
+            <div class="content">
+                <h3>It's really far off</h3>
+                <form id="ci_pop_prop_z_form" class="ci_pop_prop_z_form">
+                    <label for="ci_pop_prop_z_z"> z: </label>
+                    <input type="number" id="ci_pop_prop_z_z" name="ci_pop_prop_z_z" min="0" step="0.001">
+                    <br>
+                    <label for="ci_pop_prop_z_p_hat"> p_hat: </label>
+                    <input type="number" id="ci_pop_prop_z_p_hat" name="ci_pop_prop_z_p_hat" min="0" step="0.001">
+                    <br>
+                    <label for="ci_pop_prop_z_n"> n: </label>
+                    <input type="number" id="ci_pop_prop_z_n" name="ci_pop_prop_z_n" min="0" step="0.001">
+                    <br>
+
+                    <input id="ci_pop_prop_z_submit" type="submit">
+                    <br>
+                    <input id="ci_pop_prop_z_reset" type="reset">
+
+
+                </form>
+                <div id="ci_pop_prop_z_answer">
+
+                </div>
+            </div>
+
+
+        </div> <!-- Closing Tag for calculation  section -->
+    </div> <!-- Closing Tag for main section -->
+
+<script>
+    //Variable Declarations
+    var Z_score_Finder_form = document.getElementById("Z_score_Finder_form");
+    var Z_score_Finder_answer = document.getElementById("Z_score_Finder_answer");
+
+    var t_score_Finder_form = document.getElementById("t_score_Finder_form");
+    var t_score_Finder_answer = document.getElementById("t_score_Finder_answer");
+
+    var pop_2_mean_pooled_t_form = document.getElementById("pop_2_mean_pooled_t_form");
+    var pop_2_mean_pooled_t_answer = document.getElementById("pop_2_mean_pooled_t_answer");
+
+
+    var pop_2_mean_general_t_form = document.getElementById("pop_2_mean_general_t_form");
+    var pop_2_mean_general_t_answer = document.getElementById("pop_2_mean_general_t_answer");
+
+    var binomial_distribution_form = document.getElementById("binomial_distribution_form");
+    var binomial_distribution_answer = document.getElementById("binomial_distribution_answer");
+
+    var binomial_cumulative_form = document.getElementById("binomial_cumulative_form");
+    var binomial_cumulative_answer = document.getElementById("binomial_cumulative_answer");
+
+    var ci_pop_prop_z_form = document.getElementById("ci_pop_prop_z_form");
+    var ci_pop_prop_z_answer = document.getElementById("ci_pop_prop_z_answer");
+
+
+
+
+
+    //Random Number Generator Function
+    function random_number_generator(number) {
+        return Math.floor(Math.random() * number);
+    };
+
+    //Get Current Time:
+    function getCurrentTime() {
+        var now = new Date();
+        var options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        var current_time = now.toLocaleTimeString('en-US', options);
+
+        console.log("\nCurrent Time =", current_time);
+        return current_time;
+    }
+
+    // Call the function
+    getCurrentTime();
+
+    //Code for Collapsible boxes
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+    function zScoreFinder(mean, std, target) {
+        var z = math.divide(math.subtract(target, mean), std);
+        var p = math.erf(z / math.sqrt(2)) / 2 + 0.5;
+
+        console.log("Z is " + z);
+        console.log("p is " + p);
+        return { z: z, p: p };
+    }
+
+    // Example usage
+    var result = zScoreFinder(2, 0.5, 2.64);
+    console.log(result);
+
+    function Z_score_html(event) {
+        event.preventDefault();
+        let Z_score_Finder_mean = document.getElementById("Z_score_Finder_mean").value;
+        let Z_score_Finder_std = document.getElementById("Z_score_Finder_std").value;
+        let Z_score_Finder_target = document.getElementById("Z_score_Finder_target").value;
+
+        var result = zScoreFinder(Z_score_Finder_mean, Z_score_Finder_std, Z_score_Finder_target);
+
+        Z_score_Finder_answer.innerHTML = `Z is ${result.z}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
+    }
+
+    function tScoreFinder(mean, std, target, n) {
+        var dof = n - 1;
+        var sex = math.divide(std, math.sqrt(n));
+        var t = math.divide(math.subtract(target, mean), sex);
+        //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
+        var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2)));
+
+        console.log("T is " + t);
+        console.log("p is " + p);
+        return { t: t, p: p };
+    }
+
+    // Example usage
+    var result = tScoreFinder(40, 4, 39.1, 100);
+    console.log(result);
+
+    function t_score_html(event) {
+        event.preventDefault();
+        let t_score_Finder_mean = document.getElementById("t_score_Finder_mean").value;
+        let t_score_Finder_std = document.getElementById("t_score_Finder_std").value;
+        let t_score_Finder_target = document.getElementById("t_score_Finder_target").value;
+        let t_score_Finder_n = document.getElementById("t_score_Finder_n").value;
+
+
+        var result = tScoreFinder(t_score_Finder_mean, t_score_Finder_std, t_score_Finder_target, t_score_Finder_n);
+
+        t_score_Finder_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
+    }
+
+    function pop_2_mean_pooled_t(mean1, mean2, s1, s2, n1, n2) {
+        var dof = n1 + n2 - 2;
+        var meanDiff = mean1 - mean2;
+
+        // The N part on the right
+        var rightN = math.sqrt(1 / n1 + 1 / n2);
+
+        // The Sp part
+        var spNumeratorLeft = (n1 - 1) * math.pow(s1, 2);
+        var spNumeratorRight = (n2 - 1) * math.pow(s2, 2);
+        var sp = math.sqrt((spNumeratorLeft + spNumeratorRight) / dof);
+        var pooledSp = sp * rightN;
+
+        var t = meanDiff / pooledSp;
+        //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
+        var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+
+
+        console.log("T is " + t);
+        console.log("p is " + p);
+        return { t: t, p: p };
+    }
+
+    // Example usage
+    var result = pop_2_mean_pooled_t(65.2, 70.3, 7.8, 8.4, 30, 30);
+    console.log(result);
+
+    function pop_2_mean_pooled_t_html(event) {
+        event.preventDefault();
+        let pop_2_mean_pooled_t_mean_1 = document.getElementById("pop_2_mean_pooled_t_mean_1").value;
+        let pop_2_mean_pooled_t_mean_2 = document.getElementById("pop_2_mean_pooled_t_mean_2").value;
+        let pop_2_mean_pooled_t_s1 = document.getElementById("pop_2_mean_pooled_t_s1").value;
+        let pop_2_mean_pooled_t_s2 = document.getElementById("pop_2_mean_pooled_t_s2").value;
+        let pop_2_mean_pooled_t_n1 = document.getElementById("pop_2_mean_pooled_t_n1").value;
+        let pop_2_mean_pooled_t_n2 = document.getElementById("pop_2_mean_pooled_t_n2").value;
+
+
+
+
+        var result = pop_2_mean_pooled_t(pop_2_mean_pooled_t_mean_1, pop_2_mean_pooled_t_mean_2, pop_2_mean_pooled_t_s1, pop_2_mean_pooled_t_s2, pop_2_mean_pooled_t_n1, pop_2_mean_pooled_t_n2);
+
+        pop_2_mean_pooled_t_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
+    }
+
+    function pop_2_mean_general_t(mean1, mean2, s1, s2, n1, n2) {
+        var dof = Math.min(n1 - 1, n2 - 1);
+        var meanDiff = mean1 - mean2;
+
+        var sex1 = math.pow(s1, 2) / n1;
+        var sex2 = math.pow(s2, 2) / n2;
+        var sext = math.sqrt(sex1 + sex2);
+
+        var t = meanDiff / sext;
+        //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
+        var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+
+
+        console.log("T is " + t);
+        console.log("p is " + p);
+        return { t: t, p: p };
+    }
+
+    // Example usage
+    var result = pop_2_mean_general_t(65.2, 70.3, 7.8, 8.4, 30, 30);
+    console.log(result);
+
+    function pop_2_mean_general_t_html(event) {
+        event.preventDefault();
+        let pop_2_mean_general_t_mean_1 = document.getElementById("pop_2_mean_general_t_mean_1").value;
+        let pop_2_mean_general_t_mean_2 = document.getElementById("pop_2_mean_general_t_mean_2").value;
+        let pop_2_mean_general_t_s1 = document.getElementById("pop_2_mean_general_t_s1").value;
+        let pop_2_mean_general_t_s2 = document.getElementById("pop_2_mean_general_t_s2").value;
+        let pop_2_mean_general_t_n1 = document.getElementById("pop_2_mean_general_t_n1").value;
+        let pop_2_mean_general_t_n2 = document.getElementById("pop_2_mean_general_t_n2").value;
+
+
+
+
+        var result = pop_2_mean_general_t(pop_2_mean_general_t_mean_1, pop_2_mean_general_t_mean_2, pop_2_mean_general_t_s1, pop_2_mean_general_t_s2, pop_2_mean_general_t_n1, pop_2_mean_general_t_n2);
+
+        pop_2_mean_general_t_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
+    }
+
+
+
+    function binomial_distribution(n, k, p) {
+        var nf = math.factorial(n);
+        var kf = math.factorial(k);
+        var nkf = math.factorial(n - k);
+        var choose = nf / (kf * nkf);
+        var q = 1 - p;
+        var pExp = math.pow(p, k);
+        var qExp = math.pow(q, n - k);
+
+        var prop = choose * pExp * qExp;
+
+        console.log(prop);
+        return prop;
+    }
+
+    // Example usage
+    var result = binomial_distribution(4, 1, 0.10);
+    console.log(result);
+
+    function binomial_distribution_html(event) {
+        event.preventDefault();
+        let binomial_distribution_n = document.getElementById("binomial_distribution_n").value;
+        let binomial_distribution_k = document.getElementById("binomial_distribution_k").value;
+        let binomial_distribution_p = document.getElementById("binomial_distribution_p").value;
+
+        var result = binomial_distribution(binomial_distribution_n, binomial_distribution_k, binomial_distribution_p);
+
+        binomial_distribution_answer.innerHTML = `Result is ${result}`;
+    }
+
+    function binomial_cumulative(n, r, p) {
+        var sum = 0;
+
+        for (var x = 0; x <= r; x++) {
+            sum += binomial_distribution(n, x, p);
+        }
+
+        console.log(sum);
+        return sum;
+    }
+
+    // Example usage
+    var result = binomial_cumulative(4, 4, 0.10);
+    console.log(result);
+
+
+    function binomial_cumulative_html(event) {
+        event.preventDefault();
+        let binomial_cumulative_n = document.getElementById("binomial_cumulative_n").value;
+        let binomial_cumulative_r = document.getElementById("binomial_cumulative_r").value;
+        let binomial_cumulative_p = document.getElementById("binomial_cumulative_p").value;
+
+        var result = binomial_cumulative(binomial_cumulative_n, binomial_cumulative_r, binomial_cumulative_p);
+
+        binomial_cumulative_answer.innerHTML = `Result is ${result}`;
+    }
+
+
+    // Function to perform Z-table lookup
+    function zTableLookup(probability) {
+        // Larger Z-table (you can extend this further)
+        const zTable = {
+            0.0001: -3.71,
+            0.0005: -3.29,
+            0.001: -3.09,
+            0.005: -2.58,
+            0.01: -2.33,
+            0.025: -1.96,
+            0.05: -1.64,
+            0.1: -1.28,
+            0.15: -1.04,
+            0.2: -0.84,
+            0.25: -0.67,
+            0.3: -0.52,
+            0.35: -0.39,
+            0.4: -0.25,
+            0.45: -0.13,
+            0.5: 0,
+            0.55: 0.13,
+            0.6: 0.25,
+            0.65: 0.39,
+            0.7: 0.52,
+            0.75: 0.67,
+            0.8: 0.84,
+            0.85: 1.04,
+            0.9: 1.28,
+            0.925: 1.48,
+            0.95: 1.64,
+            0.975: 1.96,
+            0.99: 2.33,
+            0.995: 2.58,
+            0.999: 3.09,
+            0.9995: 3.29,
+            0.9999: 3.71,
+        };
+
+        // Check if the probability is in the table
+        if (zTable[probability] !== undefined) {
+            return zTable[probability];
+        }
+
+        // If not, find the nearest value
+        const closestProb = Object.keys(zTable).reduce((prev, curr) => (
+            Math.abs(curr - probability) < Math.abs(prev - probability) ? curr : prev
+        ));
+
+        return zTable[closestProb];
+    }
+
+
+    function ci_pop_prop_z(z, p_hat, n) {
+        var probability = (1 + z) / 2;
+        var zVal = zTableLookup(probability); // Z-table lookup
+        console.log(zVal);
+
+        var sep = Math.sqrt((p_hat * (1 - p_hat)) / n);
+        console.log(sep);
+
+        var ans1 = p_hat + zVal * sep;
+        var ans2 = p_hat - zVal * sep;
+        console.log(ans2, ans1);
+
+        return [ans2, ans1];
+    }
+
+    // Example usage
+    var result = ci_pop_prop_z(0.90, 0.625, 80);
+    console.log(result);
+
+    function ci_pop_prop_z_html(event) {
+        event.preventDefault();
+        let ci_pop_prop_z_z = document.getElementById("ci_pop_prop_z_z").value;
+        let ci_pop_prop_z_p_hat = document.getElementById("ci_pop_prop_z_p_hat").value;
+        let ci_pop_prop_z_n = document.getElementById("ci_pop_prop_z_n").value;
+
+        var result = ci_pop_prop_z(ci_pop_prop_z_z, ci_pop_prop_z_p_hat, ci_pop_prop_z_n);
+
+        ci_pop_prop_z_answer.innerHTML = `Result is ${result}`;
+    }
+    //Do conservative version next.
+
+
+
+
+
+
+    Z_score_Finder_form.addEventListener("submit", Z_score_html);
+    t_score_Finder_form.addEventListener("submit", t_score_html);
+    pop_2_mean_pooled_t_form.addEventListener("submit", pop_2_mean_pooled_t_html);
+    pop_2_mean_general_t_form.addEventListener("submit", pop_2_mean_general_t_html);
+    binomial_distribution_form.addEventListener("submit", binomial_distribution_html);
+    binomial_cumulative_form.addEventListener("submit", binomial_cumulative_html);
+    ci_pop_prop_z_form.addEventListener("submit", ci_pop_prop_z_html);
+
+
+
+</script>
+</body>
+</html>
