@@ -526,7 +526,7 @@
         binomial_cumulative_answer.innerHTML = `Result is ${result}`;
     }
 
-
+    //To do: look for an alternative to stats.norm.ppf((1+z)/2)
     // Function to perform Z-table lookup
     function zTableLookup(probability) {
         // Larger Z-table (you can extend this further)
@@ -623,6 +623,27 @@
     binomial_cumulative_form.addEventListener("submit", binomial_cumulative_html);
     ci_pop_prop_z_form.addEventListener("submit", ci_pop_prop_z_html);
 
+
+
+    /*
+    Approach 2: Using Taylor Series Expansion
+
+Taylor series expansion approximates normal CDF. Calculate terms based on input x, coefficients, and constants. Return result or its complement for x > 0.
+
+function GFG(x) {
+    const T =
+        1 / (1 + 0.2316419 * Math.abs(x));
+    const D =
+        0.3989423 * Math.exp(-x * x / 2);
+    const cd =
+        D * T * (0.3193815 + T * (-0.3565638 + T *
+            (1.781478 + T * (-1.821256 + T * 1.330274))));
+    if (x > 0) return 1 - cd;
+    return cd;
+}
+console.log(GFG(1.5));
+
+    */
 
 
 </script>
