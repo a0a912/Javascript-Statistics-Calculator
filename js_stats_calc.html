@@ -98,11 +98,25 @@
                 <div id="Z_score_Finder_answer">
 
                 </div>
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+                    <p>// Z Score Finder Function. </p>
+                    <p>// Purpose: Calculates the z-score for a given value in a dataset.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - mean: The Mean for the data </p>
+                    <p>//   - std: The standard deviation </p>
+                    <p>//   - target: The value you want to find the z score/ </p>
+                    <p>// When to use this function: </p>
+                    <p>//   - When you have a dataset and want to know how many standard deviations a specific value is from the mean. </p>
+                    <p>// Tips and Warnings: </p>
+                    <p>//   - Try using the Z Score finder if you don't explictly need the population size (such as finding the general IQ of a population </p>
+                </div>
+
             </div>
 
             <button type="button" class="collapsible">Rough t Score Finder Function for left tailed test </button>
             <div class="content">
-                <h3> Way off. Remember to check this later</h3>
+                <h3> Close. Thanks Kevin</h3>
                 <form id="t_score_Finder_form" class="t_score_Finder_form">
                     <label for="t_score_Finder_mean"> Mean: </label>
                     <input type="number" id="t_score_Finder_mean" name="t_score_Finder_mean" min="0" step="0.001">
@@ -125,11 +139,28 @@
                 <div id="t_score_Finder_answer">
 
                 </div>
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+                    <p> // t Score Finder Function. </p>
+                    <p>// Purpose: Calculates the t-score for a left-tailed test in a normal distribution. </p>
+                    <p>// Inputs: </p>
+                    <p>//   - mean: The mean of the population or sample. </p>
+                    <p>//   - std: The standard deviation of the population or sample. </p>
+                    <p>//   - target: The value for which you want to find the t-score. </p>
+                    <p>//   - n: The sample size (for sample t-score calculations). </p>
+                    <p>// When to use this function: </p>
+                    <p>//   - When you have summary statistics (mean, standard deviation) and want to find the t-score for a specific value.</p>
+                    <p>//  -When you explictly have a sample size of a small part of a population. You would use a T test instead of a Z test </p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Ensure the standard deviation is not zero. </p>
+                    <p>//</p>
+                    <p>//   - Be cautious with interpretations, especially when dealing with small sample sizes. </p>
+                </div>
             </div>
 
             <button type="button" class="collapsible">Rough Pooled t test for difference in 2 sample means</button>
             <div class="content">
-                <h3> Way off. I really gotta look into this at some point</h3>
+                <h3> Hey, Now it works</h3>
                 <form id="pop_2_mean_pooled_t_form" class="pop_2_mean_pooled_t_form">
                     <label for="pop_2_mean_pooled_t_mean_1"> Mean 1: </label>
                     <input type="number" id="pop_2_mean_pooled_t_mean_1" name="pop_2_mean_pooled_t_mean_1" min="0" step="0.001">
@@ -159,11 +190,28 @@
 
                 </div>
 
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+                    <p>// Pooled T-Score Function for Two Population Means.</p>
+                    <p>// Purpose: Calculates the t-score for the difference in means between two populations using a pooled standard deviation.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - mean1: Mean of the first population.</p>
+                    <p>//   - mean2: Mean of the second population.</p>
+                    <p>//   - s1: Standard deviation of the first population.</p>
+                    <p>//   - s2: Standard deviation of the second population.</p>
+                    <p>//   - n1: Sample size of the first population.</p>
+                    <p>//   - n2: Sample size of the second population.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When comparing the means of two populations with assumed equal variances.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Ensure the sample sizes are greater than 1.</p>
+                    <p>//   - Interpret results cautiously, especially when assumptions (equal variances) are violated.</p>
+                </div>
 
             </div>
             <button type="button" class="collapsible">Rough General t test for difference in 2 sample means</button>
             <div class="content">
-                <h3> I get the right t values but the ps are incredibly off</h3>
+                <h3> Pretty close</h3>
                 <form id="pop_2_mean_general_t_form" class="pop_2_mean_general_t_form">
                     <label for="pop_2_mean_general_t_mean_1"> Mean 1: </label>
                     <input type="number" id="pop_2_mean_general_t_mean_1" name="pop_2_mean_general_t_mean_1" min="0" step="0.001">
@@ -193,6 +241,28 @@
 
                 </div>
 
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+
+                    <p>// General T-Score Function for Two Population Means. </p>
+                    <p>// Purpose: Calculates the t-score for the difference in means between two populations.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - mean1: Mean of the first population.</p>
+                    <p>//   - mean2: Mean of the second population.</p>
+                    <p>//   - s1: Standard deviation of the first population.</p>
+                    <p>//   - s2: Standard deviation of the second population.</p>
+                    <p>//   - n1: Sample size of the first population.</p>
+                    <p>//   - n2: Sample size of the second population.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When comparing the means of two populations with potentially unequal variances.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Ensure the sample sizes are greater than 1.</p>
+                    <p>//   - Interpret results cautiously, especially when assumptions (equal variances) are violated </p>
+
+                </div>
+
+
+
         </div>
             <button type="button" class="collapsible">Binomial Distriubution </button>
             <div class="content">
@@ -215,6 +285,23 @@
 
                 </form>
                 <div id="binomial_distribution_answer">
+
+                </div>
+
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+
+                    <p>// Binomial Distribution Probability Function. </p>
+                    <p>// Purpose: Calculates the probability of obtaining exactly k successes in n independent Bernoulli trials.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - n: The number of trials.</p>
+                    <p>//   - k: The number of successful outcomes.</p>
+                    <p>//   - p: The probability of success in a single trial.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When dealing with a discrete probability distribution for a binary outcome (success/failure) in multiple trials.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Ensure n and k are non-negative integers.</p>
+                    <p>//   - The parameter p should be between 0 and 1, representing the probability of success.</p>
 
                 </div>
         </div> <!-- Closing Tag for content -->
@@ -241,10 +328,27 @@
                 <div id="binomial_cumulative_answer">
 
                 </div>
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+
+                    <p>  // Binomial Cumulative Probability Function. </p>
+                    <p>// Purpose: Calculates the cumulative probability of obtaining up to r successes in n independent Bernoulli trials.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - n: The number of trials.</p>
+                    <p>//   - r: The maximum number of successful outcomes to consider.</p>
+                    <p>//   - p: The probability of success in a single trial.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When dealing with the cumulative probability of achieving a certain number of successes in multiple trials.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Ensure n and r are non-negative integers.</p>
+                    <p>//   - The parameter p should be between 0 and 1, representing the probability of success.</p>
+
+
+                </div>
             </div>
             <button type="button" class="collapsible">confidence interval of a population proportion with a Z </button>
             <div class="content">
-                <h3>It's really far off</h3>
+                <h3>It's pretty close. Could be closer if I found a better way to get the p value</h3>
                 <form id="ci_pop_prop_z_form" class="ci_pop_prop_z_form">
                     <label for="ci_pop_prop_z_z"> z: </label>
                     <input type="number" id="ci_pop_prop_z_z" name="ci_pop_prop_z_z" min="0" step="0.001">
@@ -265,10 +369,28 @@
                 <div id="ci_pop_prop_z_answer">
 
                 </div>
+
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+
+                    <p> // Confidence Interval Calculation for Population Proportion with Z. </p>
+                    <p>// Purpose: Calculates the confidence interval for a population proportion using the Z-distribution.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - z: The Z-score corresponding to the desired confidence level (e.g., 0.95 for a 95% confidence interval).</p>
+                    <p>//   - p_hat: The sample proportion.</p>
+                    <p>//   - n: The sample size.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When estimating the range in which the true population proportion is likely to fall.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Provide the appropriate Z-score based on the desired confidence level.</p>
+                    <p>//   - Ensure p_hat is a valid proportion between 0 and 1.</p>
+                    <p>//   - Interpret the interval cautiously, considering the assumptions of the Z-distribution.</p>
+
+                </div>
             </div>
             <button type="button" class="collapsible"> Conservative confidence interval of a population proportion with a Z </button>
             <div class="content">
-                <h3>Not even in the same ball park</h3>
+                <h3>It's really close</h3>
                 <form id="ci_pop_prop_z_conservative_form" class="ci_pop_prop_z_conservative_form">
                     <label for="ci_pop_prop_z_conservative_z"> z: </label>
                     <input type="number" id="ci_pop_prop_z_conservative_z" name="ci_pop_prop_z_conservative_z" min="0" step="0.001">
@@ -289,6 +411,68 @@
                 <div id="ci_pop_prop_z_conservative_answer">
 
                 </div>
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+                    <p>  // Conservative Confidence Interval Calculation for Population Proportion with Z. </p>
+                    <p>// Purpose: Calculates a conservative confidence interval for a population proportion using the Z-distribution.</p>
+                    <p>// Inputs:</p>
+                    <p>//   - z: The Z-score corresponding to the desired confidence level (e.g., 0.95 for a 95% confidence interval).</p>
+                    <p>//   - p_hat: The sample proportion. </p>
+                    <p>//   - n: The sample size.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When estimating a conservative range in which the true population proportion is likely to fall.</p>
+                    <p>// Tips and Warnings: </p>
+                    <p>//   - Provide the appropriate Z-score based on the desired confidence level.</p>
+                    <p>//   - Ensure p_hat is a valid proportion between 0 and 1.</p>
+                    <p>//   - Interpret the interval cautiously, considering the conservative nature of the method.</p>
+
+                </div>
+            </div>
+
+            <button type="button" class="collapsible"> the confidence interval for a sample mean, t value, sample s and sample size </button>
+            <div class="content">
+                <h3>It's really close</h3>
+                <form id="ci_pop_mean_t_form" class="ci_pop_mean_t_form">
+                    <label for="ci_pop_mean_t_mean"> mean: </label>
+                    <input type="number" id="ci_pop_mean_t_mean" name="ci_pop_mean_t_mean" min="0" step="0.001">
+                    <br>
+                    <label for="ci_pop_mean_t_t_p"> t_p: </label>
+                    <input type="number" id="ci_pop_mean_t_t_p" name="ci_pop_mean_t_t_p" min="0" step="0.001">
+                    <br>
+                    <label for="ci_pop_mean_t_std"> Sample Standard Deviation: </label>
+                    <input type="number" id="ci_pop_mean_t_std" name="ci_pop_mean_t_std" min="0" step="0.001">
+                    <br>
+                    <label for="ci_pop_mean_t_n"> n: </label>
+                    <input type="number" id="ci_pop_mean_t_n" name="ci_pop_mean_t_n" min="0" step="0.001">
+                    <br>
+
+                    <input id="ci_pop_mean_t_submit" type="submit">
+                    <br>
+                    <input id="ci_pop_mean_t_reset" type="reset">
+
+
+                </form>
+                <div id="ci_pop_mean_t_answer">
+
+                </div>
+                <button type="button" class="collapsible">Additional Info: </button>
+                <div class="content">
+                  <p>  // Confidence Interval Calculation for Sample Mean with t-Distribution.</p>
+                    <p> // Purpose: Calculates the confidence interval for a sample mean using the t-distribution.</p>
+                    <p> // Inputs:</p>
+                    <p>//   - mean: The sample mean.</p>
+                    <p>//   - t_p: The t-value corresponding to the desired confidence level.</p>
+                    <p>//   - s: The sample standard deviation.</p>
+                    <p>//   - n: The sample size.</p>
+                    <p>// When to use this function:</p>
+                    <p>//   - When estimating the range in which the true population mean is likely to fall based on a sample.</p>
+                    <p>// Tips and Warnings:</p>
+                    <p>//   - Provide the appropriate t-value based on the desired confidence level and degrees of freedom.</p>
+                    <p>//   - Ensure the sample standard deviation and size are valid (non-negative and greater than 1, respectively).</p>
+                    <p>//   - Interpret the interval cautiously, considering the assumptions of the t-distribution.</p>
+
+
+                </div>
             </div>
 
 
@@ -300,8 +484,8 @@
     //console.log(jStat.normal.cdf(2.64, 2, 0.5))
     //console.log(jStat.normal.inv(jStat.normal.cdf(2.64, 2, 0.5),2, 0.5))
     //jStat.ttest( value, mean, sd, n, sides )
-    console.log(jStat.tscore(39.1, 40, 4, 100))
-    console.log(jStat.ttest(jStat.tscore(39.1, 40, 4, 100),100, 1));
+    //console.log(jStat.tscore(39.1, 40, 4, 100))
+    //console.log(jStat.ttest(jStat.tscore(39.1, 40, 4, 100),100, 1));
     //Variable Declarations
     var Z_score_Finder_form = document.getElementById("Z_score_Finder_form");
     var Z_score_Finder_answer = document.getElementById("Z_score_Finder_answer");
@@ -327,6 +511,9 @@
 
     var ci_pop_prop_z_conservative_form = document.getElementById("ci_pop_prop_z_conservative_form");
     var ci_pop_prop_z_conservative_answer = document.getElementById("ci_pop_prop_z_conservative_answer");
+    
+    var ci_pop_mean_t_form = document.getElementById("ci_pop_mean_t_form");
+    var ci_pop_mean_t_answer = document.getElementById("ci_pop_mean_t_answer");
 
     //import cdf from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-t-cdf@esm/index.mjs';
 
@@ -368,7 +555,16 @@
             }
         });
     }
-
+    // Z Score Finder Function.
+    // Purpose: Calculates the z-score for a given value in a dataset.
+    // Inputs:
+    //   - mean: The Mean for the data
+    //   - std: The standard deviation
+    //   - target: The value you want to find the z score/
+    // When to use this function:
+    //   - When you have a dataset and want to know how many standard deviations a specific value is from the mean.
+    // Tips and Warnings:
+    //   - Try using the Z Score finder if you don't explictly need the population size (such as finding the general IQ of a population
     function zScoreFinder(mean, std, target) {
         var z = math.divide(math.subtract(target, mean), std);
         var p = math.erf(z / math.sqrt(2)) / 2 + 0.5;
@@ -392,13 +588,42 @@
 
         Z_score_Finder_answer.innerHTML = `Z is ${result.z}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
     }
-
+    /*
     function tScoreFinder(mean, std, target, n) {
         var dof = n - 1;
         var sex = math.divide(std, math.sqrt(n));
         var t = math.divide(math.subtract(target, mean), sex);
         //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
         var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2)));
+
+        //console.log("T is " + t);
+        //console.log("p is " + p);
+        return { t: t, p: p };
+    }
+
+
+     */
+    // t Score Finder Function.
+    // Purpose: Calculates the t-score for a left-tailed test in a normal distribution.
+    // Inputs:
+    //   - mean: The mean of the population or sample.
+    //   - std: The standard deviation of the population or sample.
+    //   - target: The value for which you want to find the t-score.
+    //   - n: The sample size (for sample t-score calculations).
+    // When to use this function:
+    //   - When you have summary statistics (mean, standard deviation) and want to find the t-score for a specific value.
+    //  -When you explictly have a sample size of a small part of a population. You would use a T test instead of a Z test
+    // Tips and Warnings:
+    //   - Ensure the standard deviation is not zero.
+    //
+    //   - Be cautious with interpretations, especially when dealing with small sample sizes.
+
+    function tScoreFinder(mean, std, target, n) {
+        //var t = math.divide(math.subtract(target, mean), sex);
+        var t = jStat.tscore( target, mean, std, n )
+        //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
+        //var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2)));
+        var p = jStat.ttest( target, mean, std, n, 1 );
 
         //console.log("T is " + t);
         //console.log("p is " + p);
@@ -422,9 +647,27 @@
         t_score_Finder_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
     }
 
+    // Pooled T-Score Function for Two Population Means.
+    // Purpose: Calculates the t-score for the difference in means between two populations using a pooled standard deviation.
+    // Inputs:
+    //   - mean1: Mean of the first population.
+    //   - mean2: Mean of the second population.
+    //   - s1: Standard deviation of the first population.
+    //   - s2: Standard deviation of the second population.
+    //   - n1: Sample size of the first population.
+    //   - n2: Sample size of the second population.
+    // When to use this function:
+    //   - When comparing the means of two populations with assumed equal variances.
+    // Tips and Warnings:
+    //   - Ensure the sample sizes are greater than 1.
+    //   - Interpret results cautiously, especially when assumptions (equal variances) are violated.
+
     function pop_2_mean_pooled_t(mean1, mean2, s1, s2, n1, n2) {
-        var dof = n1 + n2 - 2;
+        //console.log(`mean1 is ${mean1}, mean2 is ${mean2}, s1 is ${s1}, s2 is ${s2}, n1 is ${n1}, n2 is ${n2}`)
+        const dof = Number(n1) + Number(n2) - 2;
+        //console.log(`dof is ${dof}`)
         var meanDiff = mean1 - mean2;
+        //console.log(`meanDiff is ${meanDiff}`)
 
         // The N part on the right
         var rightN = math.sqrt(1 / n1 + 1 / n2);
@@ -437,17 +680,20 @@
 
         var t = meanDiff / pooledSp;
         //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
-        var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+        //var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+        var p = jStat.ttest( tscore=t, n=(n1+n2), sides=1 );
 
 
         //console.log("T is " + t);
         //console.log("p is " + p);
-        return { t: t, p: p };
+        return { ta: t, pa: p };
     }
 
     // Example usage
     var result = pop_2_mean_pooled_t(65.2, 70.3, 7.8, 8.4, 30, 30);
-    //console.log(result);
+    //console.log(`pooled 2 mean pa is ${result["pa"]} and ta is ${result["ta"]}`);
+
+    //Hey, It now works
 
     function pop_2_mean_pooled_t_html(event) {
         event.preventDefault();
@@ -463,12 +709,27 @@
 
         var result = pop_2_mean_pooled_t(pop_2_mean_pooled_t_mean_1, pop_2_mean_pooled_t_mean_2, pop_2_mean_pooled_t_s1, pop_2_mean_pooled_t_s2, pop_2_mean_pooled_t_n1, pop_2_mean_pooled_t_n2);
 
-        pop_2_mean_pooled_t_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
+        pop_2_mean_pooled_t_answer.innerHTML = `ta is ${result.ta}, pa is ${result.pa}. The Right Tail value is ${1-result.pa}`;
     }
+
+    // General T-Score Function for Two Population Means.
+    // Purpose: Calculates the t-score for the difference in means between two populations.
+    // Inputs:
+    //   - mean1: Mean of the first population.
+    //   - mean2: Mean of the second population.
+    //   - s1: Standard deviation of the first population.
+    //   - s2: Standard deviation of the second population.
+    //   - n1: Sample size of the first population.
+    //   - n2: Sample size of the second population.
+    // When to use this function:
+    //   - When comparing the means of two populations with potentially unequal variances.
+    // Tips and Warnings:
+    //   - Ensure the sample sizes are greater than 1.
+    //   - Interpret results cautiously, especially when assumptions (equal variances) are violated
 
     function pop_2_mean_general_t(mean1, mean2, s1, s2, n1, n2) {
         var dof = Math.min(n1 - 1, n2 - 1);
-        var meanDiff = mean1 - mean2;
+        var meanDiff = Number(mean1) - Number(mean2);
 
         var sex1 = math.pow(s1, 2) / n1;
         var sex2 = math.pow(s2, 2) / n2;
@@ -476,7 +737,10 @@
 
         var t = meanDiff / sext;
         //var p = 0.5 * (1 + math.erf(t / math.sqrt(2)));
-        var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+        //var p = 2 * (1 - 0.5 * math.erf(Math.abs(t) / Math.sqrt(2))); // Using two-tailed test
+        //Python code: p = stats.t.cdf(t, dof)
+        //var p =  Math.tcdf(t, dof);
+        var p = jStat.studentt.cdf(t, dof);
 
 
         //console.log("T is " + t);
@@ -505,7 +769,17 @@
         pop_2_mean_general_t_answer.innerHTML = `t is ${result.t}, p is ${result.p}. The Right Tail value is ${1-result.p}`;
     }
 
-
+    // Binomial Distribution Probability Function.
+    // Purpose: Calculates the probability of obtaining exactly k successes in n independent Bernoulli trials.
+    // Inputs:
+    //   - n: The number of trials.
+    //   - k: The number of successful outcomes.
+    //   - p: The probability of success in a single trial.
+    // When to use this function:
+    //   - When dealing with a discrete probability distribution for a binary outcome (success/failure) in multiple trials.
+    // Tips and Warnings:
+    //   - Ensure n and k are non-negative integers.
+    //   - The parameter p should be between 0 and 1, representing the probability of success.
 
     function binomial_distribution(n, k, p) {
         var nf = math.factorial(n);
@@ -536,6 +810,19 @@
 
         binomial_distribution_answer.innerHTML = `Result is ${result}`;
     }
+
+    // Binomial Cumulative Probability Function.
+    // Purpose: Calculates the cumulative probability of obtaining up to r successes in n independent Bernoulli trials.
+    // Inputs:
+    //   - n: The number of trials.
+    //   - r: The maximum number of successful outcomes to consider.
+    //   - p: The probability of success in a single trial.
+    // When to use this function:
+    //   - When dealing with the cumulative probability of achieving a certain number of successes in multiple trials.
+    // Tips and Warnings:
+    //   - Ensure n and r are non-negative integers.
+    //   - The parameter p should be between 0 and 1, representing the probability of success.
+
 
     function binomial_cumulative(n, r, p) {
         var sum = 0;
@@ -616,17 +903,38 @@
         return zTable[closestProb];
     }
 
-
+    // Confidence Interval Calculation for Population Proportion with Z.
+    // Purpose: Calculates the confidence interval for a population proportion using the Z-distribution.
+    // Inputs:
+    //   - z: The Z-score corresponding to the desired confidence level (e.g., 0.95 for a 95% confidence interval).
+    //   - p_hat: The sample proportion.
+    //   - n: The sample size.
+    // When to use this function:
+    //   - When estimating the range in which the true population proportion is likely to fall.
+    // Tips and Warnings:
+    //   - Provide the appropriate Z-score based on the desired confidence level.
+    //   - Ensure p_hat is a valid proportion between 0 and 1.
+    //   - Interpret the interval cautiously, considering the assumptions of the Z-distribution.
     function ci_pop_prop_z(z, p_hat, n) {
-        var probability = (1 + z) / 2;
+        var probability = (1 + Number(z)) / 2;
+        //
         var zVal = zTableLookup(probability); // Z-table lookup
-        //console.log(zVal);
+        //var zVal = jStat.zscore(probability, flag===true);
 
-        var sep = Math.sqrt((p_hat * (1 - p_hat)) / n);
+        //var zVal = jStat.normal.inv(probability);
+        //var zVal = jStat.normal.inv(z);
+
+        //let probability = Math.max(0, Math.min(1, z));
+
+        // Calculate the corresponding z-score
+        //var zVal = jStat.normal.inv(probability);
+
+        console.log(zVal);
+        var sep = Math.sqrt((Number(p_hat) * (1 - Number(p_hat))) / n);
         //console.log(sep);
 
-        var ans1 = p_hat + zVal * sep;
-        var ans2 = p_hat - zVal * sep;
+        var ans1 = Number(p_hat) + Number(zVal) * Number(sep);
+        var ans2 = Number(p_hat) - Number(zVal) * Number(sep);
         //console.log(ans2, ans1);
 
         return [ans2, ans1];
@@ -647,18 +955,30 @@
         ci_pop_prop_z_answer.innerHTML = `Result is ${result}`;
     }
     //Do conservative version next.
+    // Conservative Confidence Interval Calculation for Population Proportion with Z.
+    // Purpose: Calculates a conservative confidence interval for a population proportion using the Z-distribution.
+    // Inputs:
+    //   - z: The Z-score corresponding to the desired confidence level (e.g., 0.95 for a 95% confidence interval).
+    //   - p_hat: The sample proportion.
+    //   - n: The sample size.
+    // When to use this function:
+    //   - When estimating a conservative range in which the true population proportion is likely to fall.
+    // Tips and Warnings:
+    //   - Provide the appropriate Z-score based on the desired confidence level.
+    //   - Ensure p_hat is a valid proportion between 0 and 1.
+    //   - Interpret the interval cautiously, considering the conservative nature of the method.
 
     function ci_pop_prop_z_conservative(z, p_hat, n) {
         //var zVal = math.erfinv((1 + z) / 2) * Math.sqrt(2); // Equivalent to stats.norm.ppf
-        var probability = (1 + z) / 2;
+        var probability = (1 + Number(z)) / 2;
         var zVal = zTableLookup(probability); // Z-table lookup
         //console.log(zVal);
 
-        var consSep = zVal / (2 * Math.sqrt(n));
+        var consSep = Number(zVal) / (2 * Math.sqrt(n));
         //console.log(consSep);
 
-        var ans1 = p_hat + zVal * consSep;
-        var ans2 = p_hat - zVal * consSep;
+        var ans1 = Number(p_hat) + Number(zVal) * Number(consSep);
+        var ans2 = Number(p_hat) - Number(zVal) * Number(consSep);
         //console.log(ans2, ans1);
 
         return [ans2, ans1];
@@ -680,8 +1000,37 @@
         ci_pop_prop_z_conservative_answer.innerHTML = `Result is ${result}`;
     }
 
+    // Confidence Interval Calculation for Sample Mean with t-Distribution.
+    // Purpose: Calculates the confidence interval for a sample mean using the t-distribution.
+    // Inputs:
+    //   - mean: The sample mean.
+    //   - t_p: The t-value corresponding to the desired confidence level.
+    //   - s: The sample standard deviation.
+    //   - n: The sample size.
+    // When to use this function:
+    //   - When estimating the range in which the true population mean is likely to fall based on a sample.
+    // Tips and Warnings:
+    //   - Provide the appropriate t-value based on the desired confidence level and degrees of freedom.
+    //   - Ensure the sample standard deviation and size are valid (non-negative and greater than 1, respectively).
+    //   - Interpret the interval cautiously, considering the assumptions of the t-distribution.
 
+    function ci_pop_mean_t(mean, t_p, s, n) {
+        return jStat.tci(Number(mean), Number(1-t_p), Number(s), Number(n));
+    }
 
+    console.log(ci_pop_mean_t(497.3, 0.95, 73.4, 15));
+
+    function ci_pop_mean_t_html(event) {
+        event.preventDefault();
+        let ci_pop_mean_t_mean = document.getElementById("ci_pop_mean_t_mean").value;
+        let ci_pop_mean_t_t_p = document.getElementById("ci_pop_mean_t_t_p").value;
+        let ci_pop_mean_t_std = document.getElementById("ci_pop_mean_t_std").value;
+        let ci_pop_mean_t_n = document.getElementById("ci_pop_mean_t_n").value;
+
+        var result =  ci_pop_mean_t(ci_pop_mean_t_mean, ci_pop_mean_t_t_p, ci_pop_mean_t_std, ci_pop_mean_t_n);
+        ci_pop_mean_t_answer.innerHTML =   `Result is ${result}`;
+
+    }
 
 
 
@@ -695,6 +1044,7 @@
     binomial_cumulative_form.addEventListener("submit", binomial_cumulative_html);
     ci_pop_prop_z_form.addEventListener("submit", ci_pop_prop_z_html);
     ci_pop_prop_z_conservative_form.addEventListener("submit", ci_pop_prop_z_conservative_html);
+    ci_pop_mean_t_form.addEventListener("submit", ci_pop_mean_t_html);
 
 
 
